@@ -1,0 +1,46 @@
+{
+  "name": "immutable-css-cli",
+  "description": "CSS linter for immutable selectors.",
+  "author": "John Otander",
+  "version": "0.1.0",
+  "main": "index.js",
+  "files": [
+    "cli.js"
+  ],
+  "bin": {
+    "immutable-css": "cli.js"
+  },
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/johnotander/immutable-css-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "cli-app",
+    "css",
+    "postcss",
+    "postcss-plugin",
+    "immutable",
+    "mutations"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johnotander/immutable-css-cli/issues"
+  },
+  "homepage": "https://github.com/johnotander/immutable-css-cli",
+  "dependencies": {
+    "file-exists": "^0.1.1",
+    "immutable-css": "^0.1.0",
+    "is-blank": "^1.1.0",
+    "meow": "^3.4.2",
+    "postcss": "^5.0.10",
+    "postcss-import": "^7.1.0",
+    "postcss-reporter": "^1.3.0"
+  },
+  "devDependencies": {
+    "ava": "*"
+  }
+}
