@@ -29,8 +29,6 @@ const cli = meow(`
   }
 })
 
-console.log(cli)
-
 if (cli.flags.help) {
   console.log(cli.help)
   process.exit(0)
