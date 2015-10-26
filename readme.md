@@ -1,6 +1,10 @@
-# immutable-css-cli [![Build Status](https://secure.travis-ci.org/johnotander/immutable-css-cli.png?branch=master)](https://travis-ci.org/johnotander/immutable-css-cli) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+<h1 align="center">
+  <img width="360" src="https://rawgit.com/johnotander/immutable-css/master/media/logo.png" alt="immutable-css">
+</h1>
 
-CSS linter for immutable selectors.
+[![Build Status](https://secure.travis-ci.org/johnotander/immutable-css-cli.png?branch=master)](https://travis-ci.org/johnotander/immutable-css-cli) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+
+CLI app for [immutable-css](https://github.com/johnotander/immutable-css.git).
 
 ## Installation
 
