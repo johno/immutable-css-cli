@@ -1,8 +1,9 @@
 import test from 'ava'
-import immutableCssCli from './'
+import childProcess from 'child_process'
 
-test('immutable-css-cli does something awesome', t => {
+test('immutable-css-cli lints stylesheets', t => {
   t.plan(1)
 
-  t.true(immutableCssCli())
+  const cp = childProcess.execFile('../cli.js', ['fixtures/basscss.css', 'fixtures/basscss-mutations.css'], { cwd: __dirname })
+  cp.on('close', code => t.is(code, 1))
 })

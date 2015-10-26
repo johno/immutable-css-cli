@@ -37,13 +37,12 @@
     "immutable-css": "^1.0.0",
     "is-blank": "^1.1.0",
     "is-css": "^1.0.0",
-    "is-glob": "^2.0.1",
     "meow": "^3.4.2",
     "postcss": "^5.0.10",
-    "postcss-import": "^7.1.0",
-    "postcss-reporter": "^1.3.0"
+    "postcss-import": "^7.1.0"
   },
   "devDependencies": {
-    "ava": "*"
+    "ava": "*",
+    "pify": "^2.3.0"
   }
 }

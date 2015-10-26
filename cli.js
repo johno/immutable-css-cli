@@ -5,18 +5,15 @@ const fs = require('fs')
 const meow = require('meow')
 const chalk = require('chalk')
 const isCss = require('is-css')
-const isGlob = require('is-glob')
 const postcss = require('postcss')
 const isBlank = require('is-blank')
 const fileExists = require('file-exists')
 const atImport = require('postcss-import')
-const reporter = require('postcss-reporter')
 const immutableCss = require('immutable-css')
 
 const cli = meow(`
   Usage
-    $ immutable-css <vendor-css-file> <app-css-file>
-    $ immutable-css <glob>
+    $ immutable-css [<path/to/css/file.css> ...]
 
   Options
     -j, --json Return json to std out
@@ -27,14 +24,52 @@ const cli = meow(`
     $ immutable-css src/css/**/*.css --json > mutations.json
 `, {
   alias: {
+    h: 'help',
     j: 'json'
   }
 })
 
-const vendorFileOrGlob = cli.input[0]
-const appFile = cli.input[1]
+console.log(cli)
 
-if (isBlank(vendorFileOrGlob)) {
+if (cli.flags.help) {
+  console.log(cli.help)
+  process.exit(0)
+}
+
+if (isBlank(cli.input)) {
   console.error(chalk.red('Please provide CSS files or a glob\n') + cli.help)
   process.exit(1)
+}
+
+var root = null
+cli.input.forEach(file => {
+  if (isValidFile(file)) {
+    var css = fs.readFileSync(file, 'utf8')
+    var newRoot = postcss.parse(css, { from: file })
+
+    if (root) {
+      root.append(newRoot)
+    } else {
+      root = newRoot
+    }
+  } else {
+    console.error('Ignoring ' + file)
+  }
+})
+
+root = atImport.process(root)
+root = immutableCss.process(root)
+
+if (cli.flags.json) {
+  console.log(JSON.stringify(root.messages))
+} else {
+  root.messages.forEach(message => {
+    console.log(chalk.white(message.text))
+  })
+
+  process.exit(isBlank(root.messages) ? 0 : 1)
+}
+
+function isValidFile (file) {
+  return isCss(file) && fileExists(file)
 }
