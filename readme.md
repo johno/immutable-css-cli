@@ -38,6 +38,12 @@ immutable-css test/fixtures/app.css test/fixtures/vendor.css
 [line 1, col 1]: /Users/johnotander/code/lab/immutable-css-cli/test/fixtures/vendor.css
 ```
 
+When mutations are present, `immutable-css` exits with an error code of `1`.
+
+```sh
+npm t && immutable-css dist/vendor.css dist/app.css && npm run deploy
+```
+
 ## License
 
 MIT
