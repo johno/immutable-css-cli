@@ -13,10 +13,7 @@
   "scripts": {
     "test": "ava"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/johnotander/immutable-css-cli.git"
-  },
+  "repository": "johnotander/immutable-css-cli",
   "keywords": [
     "cli",
     "cli-app",
@@ -27,10 +24,6 @@
     "mutations"
   ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/johnotander/immutable-css-cli/issues"
-  },
-  "homepage": "https://github.com/johnotander/immutable-css-cli",
   "dependencies": {
     "chalk": "^1.1.1",
     "file-exists": "^0.1.1",
