@@ -17,15 +17,18 @@ const cli = meow(`
 
   Options
     -j, --json Return json to std out
+    -s, --strict Lint mutations in the same file
 
   Example
     $ immutable-css vendor.css app.css
     $ immutable-css src/css/**/*.css
+    $ immutable-css app.css --strict
     $ immutable-css src/css/**/*.css --json > mutations.json
 `, {
   alias: {
     h: 'help',
-    j: 'json'
+    j: 'json',
+    s: 'strict'
   }
 })
 
@@ -37,6 +40,11 @@ if (cli.flags.help) {
 if (isBlank(cli.input)) {
   console.error(chalk.red('Please provide CSS files or a glob\n') + cli.help)
   process.exit(1)
+}
+
+var opts = {}
+if (cli.flags.strict) {
+  opts.strict = true
 }
 
 var root = null
@@ -56,7 +64,7 @@ cli.input.forEach(file => {
 })
 
 root = atImport.process(root)
-root = immutableCss.process(root)
+root = immutableCss.process(root, opts)
 
 if (cli.flags.json) {
   console.log(JSON.stringify(root.messages))
