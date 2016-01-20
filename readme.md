@@ -23,10 +23,12 @@ immutable-css -h
 
   Options
     -j, --json Return json to std out
+    -s, --strict Lint mutations in the same file
 
   Example
     $ immutable-css vendor.css app.css
     $ immutable-css src/css/**/*.css
+    $ immutable-css app.css --strict
     $ immutable-css src/css/**/*.css --json > mutations.json
 ```
 
