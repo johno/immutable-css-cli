@@ -27,7 +27,7 @@
   "dependencies": {
     "chalk": "^1.1.1",
     "file-exists": "^1.0.0",
-    "immutable-css": "^1.1.0",
+    "immutable-css": "^1.1.1",
     "is-blank": "^1.1.0",
     "is-css": "^1.0.0",
     "meow": "^3.7.0",
